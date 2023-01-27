@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"io"
 	"log"
 	"net/http"
@@ -40,7 +39,7 @@ func sendGetRequest(w http.ResponseWriter, uri string, timeoutSeconds int) {
 		Timeout: time.Duration(timeoutSeconds) * time.Second,
 	}
 
-	w.Header().Add("Content-Type", "application/json")
+	w.Header().Add("Content-Type", "text/plain")
 
 	resp, err := client.Get(microAddress + uri)
 	if err != nil {
@@ -57,5 +56,5 @@ func sendGetRequest(w http.ResponseWriter, uri string, timeoutSeconds int) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(body)
+	w.Write(body)
 }
