@@ -14,7 +14,9 @@ func main() {
 
 	router.HandleFunc("/actuate", handlers.Actuate).Methods(http.MethodGet)
 	router.HandleFunc("/ping", handlers.Ping).Methods(http.MethodGet)
+	router.HandleFunc("/all", handlers.GetAllValues).Methods(http.MethodGet)
 	router.HandleFunc("/doorstate", handlers.GetState).Methods(http.MethodGet)
+	router.HandleFunc("/doorvalues", handlers.GetStateValues).Methods(http.MethodGet)
 	router.HandleFunc("/temperature", handlers.GetTemperature).Methods(http.MethodGet)
 	router.HandleFunc("/humidity", handlers.GetHumidity).Methods(http.MethodGet)
 	router.HandleFunc("/heatindex", handlers.GetHeatIndex).Methods(http.MethodGet)
